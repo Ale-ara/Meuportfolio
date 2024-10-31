@@ -1,0 +1,114 @@
+/* Estilo Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #23d0b3;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #23d0b3;
+}
+
+body {
+    background-color: #1A1A1A;
+    height: 100vh;
+    scrollbar-width: thin;
+    scrollbar-color: #23d0b3 #032f28;
+}
+
+.interface {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Estilo do cabeçalho */
+header {
+    padding: 40px 4%;
+    background-color: #1A1A1A; /* Cor de fundo do cabeçalho */
+}
+
+header>.interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color: #6e6e6e;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0 40px;
+}
+
+/* Estilo da seção de projetos */
+section.projetos {
+    padding: 80px 4%;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os projetos se ajustem em várias linhas */
+    gap: 30px; /* Espaçamento entre os projetos */
+}
+
+.projeto {
+    background-color: #333; /* Cor de fundo do projeto */
+    border-radius: 20px; /* Bordas arredondadas */
+    overflow: hidden; /* Esconde qualquer conteúdo que exceda os limites do projeto */
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex: 1 1 calc(33.333% - 20px); /* Faz cada projeto ocupar 1/3 do espaço, com margem */
+    max-width: calc(33.333% - 20px); /* Limita a largura máxima */
+}
+
+.projeto:hover {
+    transform: scale(1.05); /* Aumenta o tamanho ao passar o mouse */
+    box-shadow: 0 0 15px #ffffff7f; /* Sombra do projeto ao passar o mouse */
+}
+
+.projeto img {
+    width: 100%; /* Faz a imagem ocupar 100% da largura do projeto */
+    border-bottom: 4px solid #23d0b3; /* Adiciona uma borda inferior para destaque */
+}
+
+.descricao {
+    padding: 20px; /* Espaçamento interno da descrição */
+    color: #fff; /* Cor do texto da descrição */
+}
+
+.descricao h3 {
+    font-size: 24px; /* Tamanho do título do projeto */
+    margin-bottom: 10px; /* Margem abaixo do título */
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    section.projetos {
+        flex-direction: column; /* Empilha os projetos em dispositivos menores */
+    }
+
+    .projeto {
+        flex: 1 1 100%; /* Faz cada projeto ocupar 100% do espaço */
+        max-width: 100%; /* Limita a largura máxima */
+    }
+}

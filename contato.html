@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="styles3.css">
+    <link rel="icon" href="https://i.imgur.com/rLu3TTg.png" type="image/png"/>
+   
+</head>
+
+<body>
+
+    <div class="interface">
+        <div class="logo">
+        <a href="#>">
+            <img src="images/logo3.png" alt="Logo">
+        </a>
+        </div><!--logo-->
+        
+        <nav class="menu-desktop">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="projetos.html">Meus projetos</a></li> <!-- Link para a nova página -->
+            </ul>
+        </nav>
+    
+                </div><!--interface-->
+    
+
+<div class="form-container">
+    <h2>Contato</h2>
+    <form id="requerimentoForm">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="empresa">Empresa:</label>
+            <input type="text" id="empresa" name="empresa" required>
+        </div>
+
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+        </div>
+
+        <input type="hidden" id="numeracao" name="numeracao">
+        <input type="hidden" id="dataHora" name="dataHora">
+
+        <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+
+    <div id="confirmationMessage" class="confirmation" style="display: none;">
+        <p>Enviado com sucesso!</p>
+        <p>Seu número de ticket é: 
+            <span id="ticketNumber"></span>
+            <button id="copyButton">Copiar</button>
+        </p>
+        <button id="okButton">OK</button>
+    </div>
+
+    <div id="loadingMessage" class="loading-message" style="display: none;">
+        <p>Enviando...</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('requerimentoForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Exibir mensagem de carregamento
+        document.getElementById('loadingMessage').style.display = 'block';
+
+        // Gerar data e número do ticket
+        const now = new Date();
+        const dataHora = now.toLocaleString();
+        const ticketNum = `TICKET-${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
+
+        document.getElementById('dataHora').value = dataHora;
+        document.getElementById('numeracao').value = ticketNum;
+
+        const formData = new FormData(document.getElementById('requerimentoForm'));
+
+        fetch('https://script.google.com/macros/s/AKfycbzGhujw-ifNsWwHiumMFcSg5IrZCKUKcq40fGYjoVkGxpjzSeyk29ZJcyrWrdwCH216Xg/exec', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+          .then(data => {
+            if (data.result === 'success') {
+                // Esconder formulário e mensagem de carregamento
+                document.getElementById('requerimentoForm').style.display = 'none';
+                document.getElementById('loadingMessage').style.display = 'none';
+
+                // Mostrar número do ticket e botões de confirmação e cópia
+                document.getElementById('ticketNumber').textContent = ticketNum;
+                document.getElementById('confirmationMessage').style.display = 'block';
+
+                // Adicionar funcionalidade ao botão "Copiar"
+                document.getElementById('copyButton').addEventListener('click', function() {
+                    navigator.clipboard.writeText(ticketNum).then(() => {
+                        alert('Ticket copiado para a área de transferência!');
+                    }).catch(err => {
+                        alert('Erro ao copiar: ' + err);
+                    });
+                });
+
+                // Ao clicar em "OK", redirecionar para a página principal
+                document.getElementById('okButton').addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+            } else {
+                alert('Erro ao enviar o formulário.');
+            }
+        }).catch(error => {
+            alert('Erro de conexão: ' + error.message);
+        });
+    });
+</script>
+
+</body>
+</html>

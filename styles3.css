@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #121212, #1c1c1c, #2b2b2b); /* Gradiente em tons de preto e cinza */
+    font-family: 'Hanken Grotesk', sans-serif;
+    color: #d4d4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; 
+    animation: fadeIn 1s forwards; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-container {
+    background-color: #1f1f1f;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.7);
+    max-width: 500px;
+    width: 100%;
+    animation: slideIn 0.5s forwards; 
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+/* Estilo para os <input> e <textarea> */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo hover para <input> e <textarea> */
+.form-group input:hover,
+.form-group textarea:hover {
+    background-color: #353535;
+}
+
+/* Efeito de foco para <input> e <textarea> */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: #3d3d3d;
+    box-shadow: 0px 0px 5px rgba(138, 180, 248, 0.8); /* Azul suave */
+}
+
+.submit-btn {
+    background-color: #8ab4f8;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #76a3e0;
+    transform: scale(1.05); 
+}
+
+.confirmation {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.confirmation img {
+    width: 50px;
+}
+
+.loading-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 20px 40px;
+    background-color: #12121200;
+    position: absolute; 
+    top: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px; 
+    margin-right: 15px; 
+    transition: filter 0.3s ease;
+}
+
+.logo img:hover {
+    filter: grayscale(100%);
+}
+
+.logo span {
+    color: #ffffff; 
+    font-size: 24px;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    background-color: #2b2b2b;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.menu a {
+    color: #d4d4d4;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.menu a:hover {
+    color: #8ab4f8;
+}
+
+#copyButton {
+    background-color: #8ab4f8;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 10px; /* Espaço entre o número do ticket e o botão */
+}
+
+#copyButton:hover {
+    background-color: #76a3e0;
+    transform: scale(1.05);
+}
+
+#okButton {
+    background-color: #8ab4f8; /* Cor de fundo */
+    color: #121212; /* Cor do texto */
+    border: none; /* Remove borda padrão */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px 20px; /* Espaço interno */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: 700; /* Peso da fonte */
+    cursor: pointer; /* Cursor de mão ao passar sobre o botão */
+    transition: background-color 0.3s, transform 0.3s; /* Transição suave para as mudanças de cor e escala */
+    margin-top: 10px; /* Margem superior para espaçamento */
+}
+
+#okButton:hover {
+    background-color: #76a3e0; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento de tamanho */
+}
+
+#okButton:focus {
+    outline: none; /* Remove contorno padrão */
+    box-shadow: 0 0 0 2px #8ab4f8; /* Adiciona um destaque ao foco */
+}
+
+header {
+    padding: 40px 4%;
+    background-color: #1A1A1A; /* Cor de fundo do cabeçalho */
+}
+
+header > .interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color: #6e6e6e;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0 40px;
+}
